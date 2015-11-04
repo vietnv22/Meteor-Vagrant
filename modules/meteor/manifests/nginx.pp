@@ -18,7 +18,7 @@ class nginx {
 
   file { 'ssl-cert':
     path => "/etc/nginx/ssl/server.crt",
-    source => "puppet:///modules/ghost/config/server.crt",
+    source => "puppet:///modules/meteor/config/server.crt",
     owner  => "root",
     group  => "root",
     require => File["/etc/nginx/ssl/"],
@@ -26,7 +26,7 @@ class nginx {
 
   file { 'ssl-cert-key':
     path => "/etc/nginx/ssl/server.key",
-    source => "puppet:///modules/ghost/config/server.key",
+    source => "puppet:///modules/meteor/config/server.key",
     owner  => "root",
     group  => "root",
     require => File["/etc/nginx/ssl/"],
@@ -34,6 +34,6 @@ class nginx {
 
   file { 'nginx-conf':
     path => "/etc/nginx/sites-enabled/default",
-    source => "puppet:///modules/ghost/config/nginx.conf",
+    source => "puppet:///modules/meteor/config/nginx.conf",
   }
 }

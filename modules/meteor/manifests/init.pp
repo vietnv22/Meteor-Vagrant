@@ -1,4 +1,4 @@
-class ghost($node_version = "v0.10.38") {
+class meteor($node_version = "v0.10.40") {
     # Add some default path values
     Exec { path => ['/usr/local/bin','/usr/local/sbin','/usr/bin/','/usr/sbin','/bin','/sbin', "/home/vagrant/nvm/${node_version}/bin"], }
 
@@ -32,18 +32,9 @@ class ghost($node_version = "v0.10.38") {
         require => [Class["essentials"]]
     }
 
-    # Set up MySQL
-    class { 'mysql':
-
-    }
-
-    # Set up PostgreSQL
-    class { 'postgresql':
-
-    }
-
+    
     # This function depends on some commands in the nvm.pp file
-    define npm( $directory="/home/vagrant/nvm/${ghost::node_version}/lib/node_modules" ) {
+    define npm( $directory="/home/vagrant/nvm/${meteor::node_version}/lib/node_modules" ) {
       exec { "install-${name}-npm-package":
         unless => "test -d ${directory}/${name}",
         command => "npm install -g ${name}",
